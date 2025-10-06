@@ -4,6 +4,7 @@ namespace _panyaGame.Scripts.Player_Related
 {     
     public class PlayerAnimController : MonoBehaviour     
     {         
+        [SerializeField] private Transform player;
         [SerializeField] private Animator animator;         
         [SerializeField] private InputHandler inputHandler;          
         
@@ -37,13 +38,13 @@ namespace _panyaGame.Scripts.Player_Related
             if (direction != 0f)
             {
                 // Get current rotation
-                Vector3 rotation = transform.eulerAngles;
+                Vector3 rotation = player.transform.eulerAngles;
                 
                 // direction > 0 means right, direction < 0 means left
-                rotation.y = direction > 0 ? 0f : 180f;
+                rotation.y = direction > 0 ? 180f : 0f;
                 
                 // Apply rotation
-                transform.eulerAngles = rotation;
+                player.transform.eulerAngles = rotation;
             }
         }
     } 

@@ -1,4 +1,5 @@
 using System;
+using _panyaGame.Scripts.Platform_Related;
 using UnityEngine;
 
 namespace _panyaGame.Scripts.Player_Related
@@ -8,29 +9,33 @@ namespace _panyaGame.Scripts.Player_Related
         [Header("Movement Settings")]
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float jumpPower = 15f;
-        [SerializeField] private float gravity = 20f;
         [SerializeField] private float drag = 0.85f;
     
         [Header("References")]
         [SerializeField] private GroundChecker groundChecker;
         [SerializeField] private InputHandler inputHandler;
+        [SerializeField] private PlatformGenerator platformGenerator;
     
+        [Header("Lose Settings")]
+        [SerializeField] private float fallThreshold = 6f;
+        
         [Header("Screen Wrap Settings")]
         [SerializeField] private bool enableScreenWrap = true;
     
         private Rigidbody2D rb;
-        private Vector2 velocity;
-        private bool wasGrounded;
+     
     
         private Camera mainCamera;
         private float screenHalfWidth;
 
+        private bool isActive = true;
+
         public static event Action OnPlayerJumped;
+        public static event Action OnPlayerLost;
     
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            rb.gravityScale = 0;
             mainCamera = Camera.main;
         
             CalculateScreenBounds();
@@ -40,19 +45,23 @@ namespace _panyaGame.Scripts.Player_Related
         void Update()
         {
             // Platforma değince zıpla
-            if (groundChecker && groundChecker.IsGrounded() && !wasGrounded && velocity.y <= 0)
+            if (groundChecker && groundChecker.IsGrounded()  && rb.linearVelocity.y <= 0)
             {
                 Jump();
             }
-        
-            wasGrounded = groundChecker != null ? groundChecker.IsGrounded() : false;
+            
+            if (platformGenerator && transform.position.y < platformGenerator.LowestPlatformY - fallThreshold && isActive)
+            {
+                isActive = false;
+                OnPlayerLost?.Invoke();
+                Debug.Log("Player lost");
+            }
         }
     
         void FixedUpdate()
         {
+            if(!isActive) return;
             HandleMovement();
-            ApplyPhysics();
-            ApplyMovement();
             CheckScreenWrap();
         }
     
@@ -74,35 +83,22 @@ namespace _panyaGame.Scripts.Player_Related
                 if (direction != 0f)
                 {
                     // Direction -1, 0 veya 1 değerinde
-                    velocity.x = direction * moveSpeed;
+                    rb.linearVelocityX = direction * moveSpeed;
                 }
                 else if (!inputHandler.IsDragging())
                 {
                     // Hiçbir input yoksa sürtünme uygula
-                    velocity.x *= drag;
+                    rb.linearVelocityX *= drag;
                 }
-            }
-        }
-    
-        void ApplyPhysics()
-        {
-            // Manuel yerçekimi
-            if (!groundChecker || !groundChecker.IsGrounded())
-            {
-                velocity.y -= gravity * Time.fixedDeltaTime;
             }
         }
     
         void Jump()
         {
-            velocity.y = jumpPower;
+            rb.linearVelocityY = jumpPower;
             OnPlayerJumped?.Invoke();
         }
-    
-        void ApplyMovement()
-        {
-            rb.linearVelocity = velocity;
-        }
+        
     
         void CheckScreenWrap()
         {
@@ -121,28 +117,6 @@ namespace _panyaGame.Scripts.Player_Related
                 transform.position = pos;
             }
         }
-    
-        // Debug bilgileri
-        void OnGUI()
-        {
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 14;
-            style.normal.textColor = Color.white;
         
-            GUI.Label(new Rect(10, 10, 300, 20), "Kontroller: Ok Tuşları / A-D / Mouse Sürükle", style);
-            GUI.Label(new Rect(10, 30, 300, 20), $"Hız: X:{velocity.x:F1} Y:{velocity.y:F1}", style);
-        
-            if (groundChecker)
-            {
-                GUI.Label(new Rect(10, 50, 300, 20), $"Zemin: {(groundChecker.IsGrounded() ? "Evet" : "Hayır")}", style);
-            }
-        
-            if (inputHandler)
-            {
-                float dir = inputHandler.GetDirection();
-                string dirText = dir > 0 ? "Sağ (1)" : dir < 0 ? "Sol (-1)" : "Yok (0)";
-                GUI.Label(new Rect(10, 70, 300, 20), $"Direction: {dirText}", style);
-            }
-        }
     }
 }

@@ -1,26 +1,17 @@
-using _panyaGame.Scripts.Player_Related;
+using System;
 using UnityEngine;
 
 namespace _panyaGame.Scripts.Platform_Related
 {
     public abstract class BasePlatform : MonoBehaviour
     {
-        [SerializeField] protected PlatformType platformType;
-        [SerializeField] protected LayerMask platformLayer;
+        protected PlatformType Type = PlatformType.Normal;
         
-        public PlatformType Type => platformType;
-        
-        // Called when platform is spawned from pool
-        public virtual void OnSpawn()
+        protected abstract void InitPlatform();
+
+        protected virtual void OnEnable()
         {
-            gameObject.SetActive(true);
+            InitPlatform();
         }
-        
-        // Called before platform is returned to pool
-        public virtual void OnDespawn()
-        {
-            gameObject.SetActive(false);
-        }
-        
     }
 }
