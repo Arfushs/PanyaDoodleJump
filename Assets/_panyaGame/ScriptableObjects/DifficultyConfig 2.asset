@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150f6c3c9970bdf4490e3b1cffc0f24c, type: 3}
+  m_Name: DifficultyConfig 2
+  m_EditorClassIdentifier: 
+  heightThreshold: 60
+  minVerticalSpacing: 1
+  maxVerticalSpacing: 1.5
+  minHorizontalOffset: -2
+  maxHorizontalOffset: 2
+  platformWeights:
+  - type: 0
+    weight: 100
+  - type: 2
+    weight: 20
+  - type: 1
+    weight: 10

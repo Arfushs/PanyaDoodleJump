@@ -13,5 +13,7 @@ namespace _panyaGame.Scripts.Platform_Related
         {
             InitPlatform();
         }
+        
+        
     }
 }

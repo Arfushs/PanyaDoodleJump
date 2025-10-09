@@ -15,7 +15,7 @@ namespace _panyaGame.Scripts.Platform_Related
         [SerializeField] private float generateAheadDistance = 20f;
         [SerializeField] private float despawnBehindDistance = 10f;
         [SerializeField] private float screenWidth = 5f;
-        [SerializeField] private int   maxPlatformsPerFrame = 4; // 💡 ani patlamayı önler
+        [SerializeField] private int  maxPlatformsPerFrame = 4; // 💡 ani patlamayı önler
 
         [Header("Difficulty Configs")]
         [SerializeField] private DifficultyConfig[] difficultyLevels;
@@ -134,28 +134,9 @@ namespace _panyaGame.Scripts.Platform_Related
             {
                 GameObject platform = LeanPool.Spawn(platformPrefab, spawnPos, Quaternion.identity, transform);
                 activePlatforms.Add(platform);
-
-                // Engel
-                if (UnityEngine.Random.value < config.obstacleSpawnChance)
-                {
-                    SpawnObstacle(platform.transform, config);
-                }
             }
         }
-
-        void SpawnObstacle(Transform platformTransform, DifficultyConfig config)
-        {
-            ObstacleType obstacleType = config.GetRandomObstacleType();
-            if (obstacleType == ObstacleType.None) return;
-
-            GameObject obstaclePrefab = prefabLibrary.GetObstaclePrefab(obstacleType);
-            if (obstaclePrefab)
-            {
-                Vector3 obstaclePos = platformTransform.position + Vector3.up * 0.5f;
-                LeanPool.Spawn(obstaclePrefab, obstaclePos, Quaternion.identity, platformTransform);
-            }
-        }
-
+        
         void DespawnOldPlatforms()
         {
             // 💡 World-space: player.position.y - behind mesafesi
@@ -183,7 +164,7 @@ namespace _panyaGame.Scripts.Platform_Related
         {
             if (difficultyLevels == null || difficultyLevels.Length == 0) return;
 
-            float h = GameManager.Instance != null ? GameManager.Instance.CurrentHeight : (player ? player.position.y : 0f);
+            float h = GameManager.Instance ? GameManager.Instance.CurrentHeight : (player ? player.position.y : 0f);
 
             int newIndex = 0;
             for (int i = 0; i < difficultyLevels.Length; i++)

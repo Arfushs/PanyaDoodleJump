@@ -1,3 +1,4 @@
+using _panyaGame.Scripts.Player_Related;
 using DG.Tweening;
 using UnityEngine;
 
@@ -19,11 +20,14 @@ namespace _panyaGame.Scripts.Platform_Related
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.collider.CompareTag("Player"))
+            if (!other.gameObject.CompareTag("Player"))
                 return;
             
-            if (other.gameObject.transform.position.y > _originalPos.y)
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            
+            if (player.GetBottomPoint().y > _originalPos.y && player.GetLinearVelocity().y <=0)
             {
+                player.Jump();
                 // cancel old tween if still playing
                 _bounceTween?.Kill();
 
@@ -37,7 +41,6 @@ namespace _panyaGame.Scripts.Platform_Related
                             .SetEase(Ease.OutBack);
                     });
             }
-            
             
         }
     }

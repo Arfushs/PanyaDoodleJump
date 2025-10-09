@@ -16,11 +16,7 @@ namespace _panyaGame.Scripts.Platform_Related
     
         [Header("Platform Types (Weight Based)")]
         public PlatformTypeWeight[] platformWeights;
-    
-        [Header("Obstacle Settings")]
-        [Range(0f, 1f)]
-        public float obstacleSpawnChance = 0.2f;
-        public ObstacleTypeWeight[] obstacleWeights;
+        
     
         public PlatformType GetRandomPlatformType()
         {
@@ -41,26 +37,7 @@ namespace _panyaGame.Scripts.Platform_Related
             return PlatformType.Normal;
         }
     
-        public ObstacleType GetRandomObstacleType()
-        {
-            if (obstacleWeights.Length == 0) return ObstacleType.None;
         
-            float totalWeight = 0f;
-            foreach (var ow in obstacleWeights)
-                totalWeight += ow.weight;
-        
-            float random = Random.Range(0f, totalWeight);
-            float current = 0f;
-        
-            foreach (var ow in obstacleWeights)
-            {
-                current += ow.weight;
-                if (random <= current)
-                    return ow.type;
-            }
-        
-            return ObstacleType.None;
-        }
     }
 
     [System.Serializable]
@@ -69,13 +46,7 @@ namespace _panyaGame.Scripts.Platform_Related
         public PlatformType type;
         public float weight = 1f;
     }
-
-    [System.Serializable]
-    public class ObstacleTypeWeight
-    {
-        public ObstacleType type;
-        public float weight = 1f;
-    }
+    
 
     public enum PlatformType
     {
@@ -83,14 +54,9 @@ namespace _panyaGame.Scripts.Platform_Related
         Moving,
         Breakable,
         Spring,
+        Explosive,
         OneTime
     }
 
-    public enum ObstacleType
-    {
-        None,
-        Enemy,
-        Spike,
-        BlackHole
-    }
+    
 }

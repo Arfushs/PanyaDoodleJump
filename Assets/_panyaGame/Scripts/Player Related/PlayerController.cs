@@ -45,9 +45,9 @@ namespace _panyaGame.Scripts.Player_Related
         void Update()
         {
             // Platforma değince zıpla
-            if (groundChecker && groundChecker.IsGrounded()  && rb.linearVelocity.y <= 0)
+            if (groundChecker.IsGrounded()  && rb.linearVelocity.y <= 0)
             {
-                Jump();
+                //Jump();
             }
             
             if (platformGenerator && transform.position.y < platformGenerator.LowestPlatformY - fallThreshold && isActive)
@@ -57,7 +57,16 @@ namespace _panyaGame.Scripts.Player_Related
                 Debug.Log("Player lost");
             }
         }
-    
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Obstacle"))
+            {
+                OnPlayerLost?.Invoke();
+                isActive = false;
+            }
+        }
+
         void FixedUpdate()
         {
             if(!isActive) return;
@@ -92,8 +101,8 @@ namespace _panyaGame.Scripts.Player_Related
                 }
             }
         }
-    
-        void Jump()
+
+        public void Jump()
         {
             rb.linearVelocityY = jumpPower;
             OnPlayerJumped?.Invoke();
@@ -118,5 +127,11 @@ namespace _panyaGame.Scripts.Player_Related
             }
         }
         
+        public Vector2 GetBottomPoint() => groundChecker.transform.position;
+
+        public Vector2 GetLinearVelocity()
+        {
+            return rb.linearVelocity;
+        }
     }
 }

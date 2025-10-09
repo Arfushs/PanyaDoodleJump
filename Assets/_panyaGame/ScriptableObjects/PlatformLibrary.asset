@@ -17,4 +17,9 @@ MonoBehaviour:
     prefab: {fileID: 6274482777974001314, guid: 7399f1597f503174990e6bb3bef0e064, type: 3}
   - type: 2
     prefab: {fileID: 1238660604789659262, guid: c1f69138f9dc9db48bd9fcf0c2ca3240, type: 3}
-  obstacles: []
+  - type: 1
+    prefab: {fileID: 3652467302512908356, guid: 66c32db88af4c4f47b60535dc8e8b737, type: 3}
+  - type: 5
+    prefab: {fileID: 6859179545364685396, guid: 2c9529363fdd9b74e99625eb660bad29, type: 3}
+  - type: 4
+    prefab: {fileID: 3407893784997517107, guid: c74baa25c1a4ca14388da9c94100dc2f, type: 3}

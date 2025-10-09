@@ -10,11 +10,7 @@ namespace _panyaGame.Scripts.Platform_Related
         public PlatformPrefabEntry[] platforms;
     
         [Header("Obstacle Prefabs")]
-        public ObstaclePrefabEntry[] obstacles;
-    
         private Dictionary<PlatformType, GameObject> platformDict;
-        private Dictionary<ObstacleType, GameObject> obstacleDict;
-    
         void OnEnable()
         {
             BuildDictionaries();
@@ -28,13 +24,7 @@ namespace _panyaGame.Scripts.Platform_Related
                 if (!platformDict.ContainsKey(entry.type))
                     platformDict.Add(entry.type, entry.prefab);
             }
-        
-            obstacleDict = new Dictionary<ObstacleType, GameObject>();
-            foreach (var entry in obstacles)
-            {
-                if (!obstacleDict.ContainsKey(entry.type))
-                    obstacleDict.Add(entry.type, entry.prefab);
-            }
+            
         }
     
         public GameObject GetPrefab(PlatformType type)
@@ -47,17 +37,7 @@ namespace _panyaGame.Scripts.Platform_Related
             Debug.LogWarning($"Platform prefab not found for type: {type}");
             return null;
         }
-    
-        public GameObject GetObstaclePrefab(ObstacleType type)
-        {
-            if (obstacleDict == null) BuildDictionaries();
         
-            if (obstacleDict != null && obstacleDict.TryGetValue(type, out GameObject prefab))
-                return prefab;
-        
-            Debug.LogWarning($"Obstacle prefab not found for type: {type}");
-            return null;
-        }
     }
 
     [System.Serializable]
@@ -67,10 +47,5 @@ namespace _panyaGame.Scripts.Platform_Related
         public GameObject prefab;
     }
 
-    [System.Serializable]
-    public class ObstaclePrefabEntry
-    {
-        public ObstacleType type;
-        public GameObject prefab;
-    }
+    
 }

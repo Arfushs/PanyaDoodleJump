@@ -52,7 +52,7 @@ namespace _panyaGame.Scripts
             mainCamera.position = startPos;
         }
 
-        private void LateUpdate()
+        private void FixedUpdate()
         {
             if (!player || !mainCamera) return;
 
