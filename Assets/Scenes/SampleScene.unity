@@ -569,7 +569,7 @@ MonoBehaviour:
   screenWidth: 5
   maxPlatformsPerFrame: 4
   difficultyLevels:
-  - {fileID: 11400000, guid: a5c38d15f5cb14c4e9a0496f14e832cc, type: 2}
+  - {fileID: 11400000, guid: fb57115bf34ed5141b970246c972b284, type: 2}
 --- !u!4 &1433925843
 Transform:
   m_ObjectHideFlags: 0
@@ -599,15 +599,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2150097774522053110, guid: 95d9b14ce6aa128469b20b46cb409861, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2108878
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2150097774522053110, guid: 95d9b14ce6aa128469b20b46cb409861, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.724457
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2150097774522053110, guid: 95d9b14ce6aa128469b20b46cb409861, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.020575702
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2150097774522053110, guid: 95d9b14ce6aa128469b20b46cb409861, type: 3}
       propertyPath: m_LocalRotation.w
@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6869250408283182809, guid: 557c7794305b3554bada383177193161, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -459655019968324220, guid: 8c9da35f0ae556741af2a3d9a8c0078d, type: 3}
     - target: {fileID: 8505459832040608097, guid: 557c7794305b3554bada383177193161, type: 3}
       propertyPath: checkSize.x
       value: 0.3

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using _panyaGame.Scripts.Player_Related;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _panyaGame.Scripts.Platform_Related
 {
@@ -20,33 +22,25 @@ namespace _panyaGame.Scripts.Platform_Related
         private Coroutine _fuseCo;
         private Color _baseColor;
 
+        private void Awake()
+        {
+            _baseColor = spriteRenderer.color;
+        }
+
         protected override void InitPlatform()
         {
             Type = PlatformType.Explosive;
-
-            if (!spriteRenderer) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            if (!coll) coll = GetComponent<Collider2D>();
-
+            
             _fuseStarted = false;
-
-            if (spriteRenderer)
-            {
-                _baseColor = spriteRenderer.color;
-                spriteRenderer.color = _baseColor; // reset
-            }
-
-            if (coll) coll.enabled = true;
+            spriteRenderer.color = _baseColor; // reset
+            
+            coll.enabled = true;
 
             // temizlik
             if (_fuseCo != null) { StopCoroutine(_fuseCo); _fuseCo = null; }
             DOTween.Kill(spriteRenderer, complete: false);
         }
-
-        private void OnDisable()
-        {
-            if (_fuseCo != null) { StopCoroutine(_fuseCo); _fuseCo = null; }
-            DOTween.Kill(spriteRenderer, complete: false);
-        }
+        
 
         private void Update()
         {
@@ -80,8 +74,9 @@ namespace _panyaGame.Scripts.Platform_Related
             }
 
             // süre bitti: collider kapat, görseli söndür (despawn yok; generator yapacak)
-            if (coll) coll.enabled = false;
+            
             spriteRenderer.DOFade(0f, 0.3f);
+            coll.enabled = false;
             VFXManager.Instance.PlayExplosionVFX(transform.position);
         }
         

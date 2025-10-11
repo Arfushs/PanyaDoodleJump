@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb36941b750774468e6c38883925a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuseTimeRange: {x: 3, y: 5}
+  fuseTimeRange: {x: 2.5, y: 3.5}
   minBlinkInterval: 0.05
   maxBlinkInterval: 0.5
   spriteRenderer: {fileID: 7489696423578157858}
@@ -196,7 +196,7 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.8, y: 0}
-  - {x: 0, y: 0}
+  - {x: 0.69, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
