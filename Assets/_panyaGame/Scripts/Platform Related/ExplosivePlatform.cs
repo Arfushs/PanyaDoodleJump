@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _panyaGame.Scripts.Managers;
 using _panyaGame.Scripts.Player_Related;
 using DG.Tweening;
 using UnityEngine;

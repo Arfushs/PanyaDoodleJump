@@ -1,5 +1,6 @@
 using UnityEngine;
 using _panyaGame.Scripts.Player_Related;
+using DG.Tweening;
 
 namespace _panyaGame.Scripts
 {
@@ -71,7 +72,7 @@ namespace _panyaGame.Scripts
                 if (_deathTimer < deathFollowDuration)
                 {
                     Vector3 deathPos = new Vector3(
-                        mainCamera.position.x,
+                        Mathf.Lerp(mainCamera.position.x, player.position.x,  smoothSpeedUp* Time.deltaTime),
                         Mathf.Lerp(mainCamera.position.y, desiredY, deathFollowSpeed * Time.deltaTime),
                         mainCamera.position.z
                     );
