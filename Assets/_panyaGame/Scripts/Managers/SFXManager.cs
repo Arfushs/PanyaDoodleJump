@@ -12,7 +12,7 @@ namespace _panyaGame.Scripts.Managers
         [field:SerializeField] public AudioClip  OneTimePlatformJumpClip { get; private set; }
         [field:SerializeField] public AudioClip  BrokenPlatformJumpClip { get; private set; }
         [field:SerializeField] public AudioClip  CloudObstacleJumpClip { get; private set; }
-        [field:SerializeField] public AudioClip  PlaneObstacleJumpClip { get; private set; }
+        [field:SerializeField] public AudioClip  ObstacleCrashed { get; private set; }
         [field:SerializeField] public AudioClip  ExplosionClip { get; private set; }
         [field:SerializeField] public AudioClip  PlayerFailedClip { get; private set; }
         

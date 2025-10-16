@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb36941b750774468e6c38883925a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuseTimeRange: {x: 2.5, y: 3.5}
+  fuseTimeRange: {x: 2.9, y: 3.8}
   minBlinkInterval: 0.05
   maxBlinkInterval: 0.5
   spriteRenderer: {fileID: 7489696423578157858}

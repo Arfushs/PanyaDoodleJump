@@ -46,7 +46,7 @@ namespace _panyaGame.Scripts.Platform_Related
         private void Update()
         {
             // child SpriteRenderer görünür olduysa başlat
-            if (!_fuseStarted && spriteRenderer && spriteRenderer.isVisible)
+            if (!_fuseStarted && Vector2.Distance(transform.position,GameManager.Instance.GetPlayerPosition()) <= 5)
             {
                 _fuseStarted = true;
                 float fuse = Random.Range(fuseTimeRange.x, fuseTimeRange.y);

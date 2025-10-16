@@ -54,7 +54,6 @@ namespace _panyaGame.Scripts.Player_Related
             
             if (platformGenerator && transform.position.y < platformGenerator.LowestPlatformY - fallThreshold && isActive)
             {
-                isActive = false;
                 FireOnPlayerLost();
             }
         }
@@ -110,6 +109,7 @@ namespace _panyaGame.Scripts.Player_Related
         {
             OnPlayerLost?.Invoke();
             coll.enabled = false;
+            isActive = false;
             SFXManager.Instance.PlayOneShot(SFXManager.Instance.PlayerFailedClip);
             Debug.Log("Player lost !!");
         } 

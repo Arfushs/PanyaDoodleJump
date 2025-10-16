@@ -1028,6 +1028,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3333247448730692676, guid: cc005684f1a5a8b49a4514858c50f742, type: 3}
+      propertyPath: <ObstacleCrashed>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: 54ac28b19c41b614c9356078626e0330, type: 3}
+    - target: {fileID: 3333247448730692676, guid: cc005684f1a5a8b49a4514858c50f742, type: 3}
       propertyPath: <OneTimePlatformJumpClip>k__BackingField
       value: 
       objectReference: {fileID: 8300000, guid: 7381b731e1a3cea47a619b53a16d1edc, type: 3}
@@ -1858,7 +1862,24 @@ MonoBehaviour:
   screenWidth: 5
   maxPlatformsPerFrame: 4
   difficultyLevels:
+  - {fileID: 11400000, guid: 5df81469b794d3d45954c1d46e0f0be8, type: 2}
+  - {fileID: 11400000, guid: 825dec10e3ecf154eb2840fde0dab926, type: 2}
+  - {fileID: 11400000, guid: 31e7897e8a2ae5e42865343886bd699b, type: 2}
+  - {fileID: 11400000, guid: 42b4ab06e02293f45b0143a971c45ed8, type: 2}
+  - {fileID: 11400000, guid: d14a6b9f7803bf44980d5120d0cd3c8c, type: 2}
+  - {fileID: 11400000, guid: a71d5214afd8e05438d84098ae8fc4f9, type: 2}
+  - {fileID: 11400000, guid: a5c38d15f5cb14c4e9a0496f14e832cc, type: 2}
+  - {fileID: 11400000, guid: f981fc39da86ac84fbb8638b3ce6b70f, type: 2}
+  - {fileID: 11400000, guid: 698837fa3ff3670488e41147b9a682c3, type: 2}
+  - {fileID: 11400000, guid: 95e2a3b56759ebb4b9bfc0362bd4191f, type: 2}
+  - {fileID: 11400000, guid: 0d14d1cb1a3af9f439cf2c60bcccc514, type: 2}
+  - {fileID: 11400000, guid: 59de95bf1fddc0b45a97ae6111f32335, type: 2}
   - {fileID: 11400000, guid: fb57115bf34ed5141b970246c972b284, type: 2}
+  - {fileID: 11400000, guid: 50ce9a54e1349134381146461974563b, type: 2}
+  - {fileID: 11400000, guid: 3c5f34f576ebdae4fa6b9e37d2e3b6ef, type: 2}
+  - {fileID: 11400000, guid: d3229ac3349494b4a8b8a455ce7d496f, type: 2}
+  - {fileID: 11400000, guid: 9dcdc29c2bad0bf4ab1fcceb2e7d69d2, type: 2}
+  - {fileID: 11400000, guid: c3705aa9ea500454b87d7faf63807430, type: 2}
 --- !u!4 &1433925843
 Transform:
   m_ObjectHideFlags: 0

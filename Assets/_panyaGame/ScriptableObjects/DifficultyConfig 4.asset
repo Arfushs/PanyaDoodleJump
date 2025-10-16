@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: DifficultyConfig 4
   m_EditorClassIdentifier: 
   heightThreshold: 200
-  minVerticalSpacing: 1.5
-  maxVerticalSpacing: 4.5
+  minVerticalSpacing: 1.1
+  maxVerticalSpacing: 1.6
   minHorizontalOffset: -2
   maxHorizontalOffset: 2
   platformWeights:
-  - type: 5
-    weight: 30
+  - type: 0
+    weight: 60
+  - type: 2
+    weight: 5
+  - type: 1
+    weight: 10
+  - type: 6
+    weight: 3

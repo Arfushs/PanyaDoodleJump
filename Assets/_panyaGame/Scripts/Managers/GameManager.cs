@@ -42,6 +42,8 @@ namespace _panyaGame.Scripts.Managers
             UpdateCurrentHeight();
         }
 
+        public Vector3 GetPlayerPosition() => player.transform.position;
+
         private void UpdateCurrentHeight()
         {
             LastHeight = player.position.y -  initialPlayerHeight;

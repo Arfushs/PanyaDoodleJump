@@ -1,4 +1,5 @@
 using System;
+using _panyaGame.Scripts.Managers;
 using _panyaGame.Scripts.Player_Related;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace _panyaGame.Scripts
                 return;
 
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            SFXManager.Instance.PlayOneShot(SFXManager.Instance.ObstacleCrashed);
             player.FireOnPlayerLost();
         }
     }
