@@ -1,3 +1,4 @@
+using _panyaGame.Scripts.Managers;
 using _panyaGame.Scripts.Player_Related;
 using DG.Tweening;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace _panyaGame.Scripts.Platform_Related
             if (player.GetBottomPoint().y > _originalPos.y && player.GetLinearVelocity().y <=0)
             {
                 player.Jump();
+                SFXManager.Instance.PlayOneShot(SFXManager.Instance.NormalPlatformJumpClip);
                 // cancel old tween if still playing
                 _bounceTween?.Kill();
 

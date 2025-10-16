@@ -1,3 +1,4 @@
+using _panyaGame.Scripts.Managers;
 using _panyaGame.Scripts.Player_Related;
 using DG.Tweening;
 using UnityEngine;
@@ -36,9 +37,11 @@ namespace _panyaGame.Scripts.Platform_Related
                 return;
 
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            
             if (player.GetBottomPoint().y > transform.position.y && player.GetLinearVelocity().y <=0)
             {
-                player.Jump();
+                player.Jump(16f);
+                SFXManager.Instance.PlayOneShot(SFXManager.Instance.CloudObstacleJumpClip);
                 KillThisObstacle();
             }
      

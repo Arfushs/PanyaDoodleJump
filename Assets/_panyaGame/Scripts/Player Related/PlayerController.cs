@@ -1,4 +1,5 @@
 using System;
+using _panyaGame.Scripts.Managers;
 using _panyaGame.Scripts.Platform_Related;
 using UnityEngine;
 
@@ -94,9 +95,14 @@ namespace _panyaGame.Scripts.Player_Related
             }
         }
 
-        public void Jump()
+        public void Jump(float jumpForce = -1)
         {
-            rb.linearVelocityY = jumpPower;
+            if(Mathf.Approximately(jumpForce, -1))
+                rb.linearVelocityY = jumpPower;
+            else
+            {
+                rb.linearVelocityY = jumpForce;
+            }
             OnPlayerJumped?.Invoke();
         }
         
@@ -104,6 +110,7 @@ namespace _panyaGame.Scripts.Player_Related
         {
             OnPlayerLost?.Invoke();
             coll.enabled = false;
+            SFXManager.Instance.PlayOneShot(SFXManager.Instance.PlayerFailedClip);
             Debug.Log("Player lost !!");
         } 
     

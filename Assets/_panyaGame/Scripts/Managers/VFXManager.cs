@@ -25,6 +25,7 @@ namespace _panyaGame.Scripts.Managers
             vfx.transform.localScale = scale;
             var anim = vfx.GetComponent<Animator>();
             anim.Play("explosion");
+            SFXManager.Instance.PlayOneShot(SFXManager.Instance.ExplosionClip);
 
             // get animation clip length and despawn after it finishes
             StartCoroutine(DespawnAfterAnim(vfx, anim));

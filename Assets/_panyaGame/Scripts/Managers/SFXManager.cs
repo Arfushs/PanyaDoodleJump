@@ -1,19 +1,50 @@
+using System;
 using UnityEngine;
 
 namespace _panyaGame.Scripts.Managers
 {
     public class SFXManager : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
+        public static SFXManager Instance;
         
+        [Header("Audio Clips")]
+        [field:SerializeField] public AudioClip  NormalPlatformJumpClip { get; private set; }
+        [field:SerializeField] public AudioClip  OneTimePlatformJumpClip { get; private set; }
+        [field:SerializeField] public AudioClip  BrokenPlatformJumpClip { get; private set; }
+        [field:SerializeField] public AudioClip  CloudObstacleJumpClip { get; private set; }
+        [field:SerializeField] public AudioClip  PlaneObstacleJumpClip { get; private set; }
+        [field:SerializeField] public AudioClip  ExplosionClip { get; private set; }
+        [field:SerializeField] public AudioClip  PlayerFailedClip { get; private set; }
+        
+        
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+            {
+                Destroy(gameObject);
+            }
+            
+            DontDestroyOnLoad(gameObject);
+            
+            _audioSource = GetComponent<AudioSource>();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void PlayOneShot(AudioClip clip)
         {
-        
+            if (!clip)
+            {
+                Debug.LogWarning("Clip could not be played !");
+                return;
+            }
+               
+            
+            _audioSource.PlayOneShot(clip);
         }
+        
+        
     }
 }

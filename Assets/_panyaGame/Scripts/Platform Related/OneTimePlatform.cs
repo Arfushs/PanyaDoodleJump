@@ -1,3 +1,4 @@
+using _panyaGame.Scripts.Managers;
 using _panyaGame.Scripts.Player_Related;
 using DG.Tweening;
 using UnityEngine;
@@ -27,8 +28,10 @@ namespace _panyaGame.Scripts.Platform_Related
             
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             
+            
             if (player.GetBottomPoint().y > transform.position.y && player.GetLinearVelocity().y <=0)
             {
+                SFXManager.Instance.PlayOneShot(SFXManager.Instance.OneTimePlatformJumpClip);
                 player.Jump();
                 FadeOut();
             }

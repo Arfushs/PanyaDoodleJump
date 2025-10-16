@@ -91,6 +91,7 @@ namespace _panyaGame.Scripts.Platform_Related
             if (player.GetBottomPoint().y > transform.position.y && player.GetLinearVelocity().y <=0)
             {
                 player.Jump();
+                SFXManager.Instance.PlayOneShot(SFXManager.Instance.NormalPlatformJumpClip);
                 
             }
             
