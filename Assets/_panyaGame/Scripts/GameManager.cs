@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform player;
     public float CurrentHeight { get; private set; } = 0;
-    public float lastHeight = 0;
+    public float LastHeight { get; private set; } = 0;
     private float initialPlayerHeight;
 
     private void Awake()
@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
 
     private void UpdateCurrentHeight()
     {
-        lastHeight = player.position.y -  initialPlayerHeight;
-        if(lastHeight > CurrentHeight)
-            CurrentHeight = lastHeight;
+        LastHeight = player.position.y -  initialPlayerHeight;
+        if(LastHeight > CurrentHeight)
+            CurrentHeight = LastHeight;
     }
 
     private void OnGUI()

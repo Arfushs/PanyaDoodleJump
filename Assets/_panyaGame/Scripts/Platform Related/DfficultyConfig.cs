@@ -55,7 +55,9 @@ namespace _panyaGame.Scripts.Platform_Related
         Breakable,
         Spring,
         Explosive,
-        OneTime
+        OneTime,
+        Obstacle,
+        MovingObstacle
     }
 
     

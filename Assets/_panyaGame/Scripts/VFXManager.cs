@@ -17,9 +17,10 @@ public class VFXManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void PlayExplosionVFX(Vector2 position)
+    public void PlayExplosionVFX(Vector2 position, Vector3 scale)
     {
         var vfx = LeanPool.Spawn(explosionVFX, position, Quaternion.identity, transform);
+        vfx.transform.localScale = scale;
         var anim = vfx.GetComponent<Animator>();
         anim.Play("explosion");
 

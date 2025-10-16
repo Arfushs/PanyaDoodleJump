@@ -77,7 +77,7 @@ namespace _panyaGame.Scripts.Platform_Related
             
             spriteRenderer.DOFade(0f, 0.3f);
             coll.enabled = false;
-            VFXManager.Instance.PlayExplosionVFX(transform.position);
+            VFXManager.Instance.PlayExplosionVFX(transform.position,new Vector3(0.44f,0.18f,0.18f));
         }
         
         private void OnCollisionEnter2D(Collision2D other)

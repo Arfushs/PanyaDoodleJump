@@ -23,7 +23,7 @@ namespace _panyaGame.Scripts.Player_Related
         [SerializeField] private bool enableScreenWrap = true;
     
         private Rigidbody2D rb;
-     
+        private Collider2D coll;
     
         private Camera mainCamera;
         private float screenHalfWidth;
@@ -32,10 +32,11 @@ namespace _panyaGame.Scripts.Player_Related
 
         public static event Action OnPlayerJumped;
         public static event Action OnPlayerLost;
-    
+        
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            coll = GetComponent<Collider2D>();
             mainCamera = Camera.main;
         
             CalculateScreenBounds();
@@ -53,19 +54,10 @@ namespace _panyaGame.Scripts.Player_Related
             if (platformGenerator && transform.position.y < platformGenerator.LowestPlatformY - fallThreshold && isActive)
             {
                 isActive = false;
-                OnPlayerLost?.Invoke();
-                Debug.Log("Player lost");
+                FireOnPlayerLost();
             }
         }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Obstacle"))
-            {
-                OnPlayerLost?.Invoke();
-                isActive = false;
-            }
-        }
+        
 
         void FixedUpdate()
         {
@@ -108,6 +100,12 @@ namespace _panyaGame.Scripts.Player_Related
             OnPlayerJumped?.Invoke();
         }
         
+        public void FireOnPlayerLost()
+        {
+            OnPlayerLost?.Invoke();
+            coll.enabled = false;
+            Debug.Log("Player lost !!");
+        } 
     
         void CheckScreenWrap()
         {

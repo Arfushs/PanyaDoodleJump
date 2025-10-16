@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 497611277}
   - component: {fileID: 497611276}
   - component: {fileID: 497611275}
+  - component: {fileID: 497611278}
   m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
@@ -307,6 +308,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497611278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497611274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fb6bb8c3a25b64f894287190892c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceDistance: 0.15
+  bounceDuration: 0.15
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1433925842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,6 +685,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.10463089
       objectReference: {fileID: 0}
+    - target: {fileID: 4850081953384231172, guid: 557c7794305b3554bada383177193161, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 041fb57d48e7aed499fe7698deffe806, type: 2}
     - target: {fileID: 4850081953384231172, guid: 557c7794305b3554bada383177193161, type: 3}
       propertyPath: m_Interpolate
       value: 0
